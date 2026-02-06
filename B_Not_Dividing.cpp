@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void solve() {
+    // Your problem-solving code goes here
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    // Process input and produce output
+    for (int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    for (int i = 0; i < n; i++){
+        if (a[i] == 1){
+            a[i]++;
+        }
+    }
+    for (int i = 0; i < n - 1; i++){
+        if (a[i+1] % a[i] == 0){
+            a[i+1]++;
+        }
+    }
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t = 1;
+    // Uncomment the next line if there are multiple test cases
+    cin >> t; 
+    while (t--) {
+        solve();
+    }
+
+    return 0;
+}
