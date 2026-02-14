@@ -3,8 +3,13 @@
 using namespace std;
 
 void solve() {
-    int n;
-    cin >> n;
+    int n, x;
+    cin >> n >> x;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++){
+        cin >> v[i];
+    }
+    
 }
 
 int main() {
@@ -12,7 +17,7 @@ int main() {
     cin.tie(nullptr);
 
     int t = 1;
-    // cin >> t; 
+    cin >> t; 
     while (t--) {
         solve();
     }
