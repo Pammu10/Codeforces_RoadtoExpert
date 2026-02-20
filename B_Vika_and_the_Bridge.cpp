@@ -23,8 +23,24 @@ void solve() {
     priority_queue<int> jumps[k+1];
     int ans = INT_MAX;
     for (int i = 1; i <= k; i++){
-        s
+        for (int j = 0; j < colors[i].size() - 1; j++){
+            jumps[i].push(colors[i][j + 1] - colors[i][j] - 1);
+        }
+        int max_val = jumps[i].top();
+        jumps[i].pop();
+        if (max_val % 2 == 0)
+			{
+				jumps[i].push(max_val / 2);
+				jumps[i].push((max_val / 2) - 1);
+			}
+        else
+            {
+                jumps[i].push(max_val / 2);
+                jumps[i].push(max_val / 2);
+            }
+        ans = min(ans, jumps[i].top());
     }
+    cout << ans << "\n";
 }
 
 int main() {
@@ -32,7 +48,7 @@ int main() {
     cin.tie(nullptr);
 
     int t = 1;
-    // cin >> t; 
+    cin >> t; 
     while (t--) {
         solve();
     }
