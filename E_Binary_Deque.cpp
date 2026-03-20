@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+
+void solve()
+{
+    int n, s;
+    cin >> n >> s;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
+    int len = -1;
+    unordered_map<int, int> mp;
+    mp[0] = -1;
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sum += v[i];
+        if (mp.count(sum - s))
+        {
+            len = max(len, i - mp[sum - s]);
+        }
+        if (!mp.count(sum))
+        {
+            mp[sum] = i;
+        }
+    }
+    if (len == -1)
+    {
+        cout << "-1\n";
+    }
+    else
+    {
+        cout << (n - len) << "\n";
+    }
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t = 1;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+    }
+
+    return 0;
+}
